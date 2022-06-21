@@ -20,7 +20,13 @@ namespace LinqChallenge.Easy
         */
         public IEnumerable<Person> GetPeopleOlderThanEighteen(IEnumerable<Person> people)
         {
-            throw new NotImplementedException();
+            if (people == null)
+                return Enumerable.Empty<Person>();
+            if (people.All(x=> x.Age < 18))
+                return Enumerable.Empty<Person>();
+            if (people.Any(x=> x.Age > 18))
+                return people.Where(x=> x.Age > 18).ToList();
+            return Enumerable.Empty<Person>();
         }
     }
 }
